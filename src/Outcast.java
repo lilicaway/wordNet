@@ -1,3 +1,6 @@
+import edu.princeton.cs.algs4.In;
+import edu.princeton.cs.algs4.StdOut;
+
 public class Outcast {
   private final WordNet wordnet;
 
@@ -28,5 +31,15 @@ public class Outcast {
     return outcast;
   }
 
+  public static void main(String[] args) {
+    WordNet wordnet = new WordNet("data/synsets.txt", "data/hypernyms.txt");
+
+    Outcast outcast = new Outcast(wordnet);
+    // for (int t = 2; t < args.length; t++) {
+    In in = new In("data/outcast5.txt");
+    String[] nouns = in.readAllStrings();
+    StdOut.println(outcast.outcast(nouns));
+    // }
+  }
 
 }

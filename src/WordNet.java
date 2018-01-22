@@ -176,4 +176,27 @@ public class WordNet {
 
   }
 
+  public static void main(String[] args) {
+    WordNet w = new WordNet("data/synsets.txt", "data/hypernyms.txt");
+
+    System.out.println(w.distance("antihistamine", "nasal_decongestant"));
+    System.out.println(w.sap("antihistamine", "nasal_decongestant"));
+    System.out.println(w.sap("Rameses_the_Great", "Henry_Valentine_Miller"));
+    System.out.println(w.distance("Rameses_the_Great", "Henry_Valentine_Miller"));
+    System.out.println(w.sap("individual", "edible_fruit"));
+    System.out.println(w.distance("individual", "edible_fruit"));
+    try {
+      w = new WordNet("synsets3.txt", "hypernymsInvalidTwoRoots.txt");
+    } catch (IllegalArgumentException e) {
+      System.out.println("synsets3.txt IllegalArgumentException");
+    }
+
+    try {
+      w = new WordNet("synsets3.txt", "hypernymsInvalidCycle.txt");
+    } catch (IllegalArgumentException e) {
+      System.out.println("synsets3.txt IllegalArgumentException");
+    }
+
+  }
+
 }
